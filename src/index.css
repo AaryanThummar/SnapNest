@@ -1,0 +1,874 @@
+/* ==========================================================================
+   LUMABOOTH — CLEAN CINEMATIC HERO DESIGN SYSTEM
+   Deep Navy / Near-Black Background: #090817
+   ========================================================================== */
+
+:root {
+  /* Core Cinematic Color System */
+  --luma-bg-primary: #090817;
+  --luma-bg-secondary: #111026;
+  --luma-bg-surface: #181636;
+  --luma-bg-surface-hover: #221F4A;
+  
+  --luma-purple-deep: #22103E;
+  --luma-purple-electric: #8B4DFF;
+  --luma-pink-luma: #E83E7A;
+  --luma-magenta: #D83C9D;
+  --luma-lavender: #B9A7FF;
+  
+  --luma-text-primary: #F7F5FF;
+  --luma-text-secondary: #B8B6D1;
+  --luma-text-muted: #8E8CA8;
+
+  /* Gradients */
+  --luma-grad-brand: linear-gradient(135deg, #8B4DFF 0%, #D83C9D 55%, #E83E7A 100%);
+  --luma-grad-btn: linear-gradient(135deg, #7928CA 0%, #B81B6C 50%, #E83E7A 100%);
+
+  /* Dynamic Event Theme Variables (Defaults to Luma Classic, dynamically overwritten) */
+  --event-primary: #E5487D;
+  --event-secondary: #8B3FD1;
+  --event-accent: #00F5D4;
+  --event-background: #090817;
+  --event-surface: rgba(13, 11, 28, 0.85);
+  --event-text: #FFFFFF;
+  --event-subtext: #B8B6D1;
+  --event-gradient: linear-gradient(135deg, #E5487D 0%, #B82E88 45%, #8B3FD1 100%);
+  --event-button-gradient: linear-gradient(135deg, #E5487D 0%, #B82E88 45%, #8B3FD1 100%);
+  --event-glow: rgba(229, 72, 125, 0.35);
+  --event-ambient-glow: radial-gradient(circle, rgba(229, 72, 125, 0.16) 0%, rgba(139, 63, 209, 0.1) 45%, transparent 70%);
+  --event-border: rgba(185, 167, 255, 0.22);
+
+  /* Radii */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Safe Area Insets for Mobile/Tablet Notches & Indicators */
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+}
+
+/* Base Reset & Mobile Native Feel */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+html, body {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background-color: var(--luma-bg-primary);
+  color: var(--luma-text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--luma-bg-primary);
+}
+
+/* Primary Cinematic START BOOTH Control */
+.luma-btn-start-hero {
+  position: relative;
+  overflow: hidden;
+  background: var(--event-button-gradient, linear-gradient(135deg, #E83E7A 0%, #C43491 38%, #9B45D8 72%, #7B3FE4 100%));
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 12px 28px rgba(0, 0, 0, 0.45),
+    0 4px 14px var(--event-glow, rgba(232, 62, 122, 0.3)),
+    0 0 22px var(--event-glow, rgba(139, 77, 255, 0.2)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  outline: none;
+  touch-action: manipulation;
+  user-select: none;
+  transition: 
+    transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.2s ease,
+    filter 0.2s ease,
+    border-color 0.2s ease;
+}
+
+/* Subtle Shimmer Sweep */
+.luma-btn-start-hero::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.22) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.luma-btn-camera-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  margin-left: 2px;
+  flex-shrink: 0;
+}
+
+.luma-btn-sparkle {
+  color: #FFFFFF;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+
+.luma-btn-arrow {
+  color: #FFFFFF;
+  flex-shrink: 0;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  margin-left: 2px;
+}
+
+/* Hover State */
+@media (hover: hover) and (pointer: fine) {
+  .luma-btn-start-hero:hover {
+    filter: brightness(1.06);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 
+      0 16px 36px rgba(0, 0, 0, 0.5),
+      0 6px 20px rgba(232, 62, 122, 0.45),
+      0 0 32px rgba(139, 77, 255, 0.35),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .luma-btn-start-hero:hover .luma-btn-arrow {
+    transform: translateX(4px);
+  }
+
+  .luma-btn-start-hero:hover::after {
+    opacity: 1;
+    animation: subtleShineSweep 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+}
+
+/* Press State */
+.luma-btn-start-hero:active {
+  transform: scale(0.97) translateY(1px);
+  box-shadow: 
+    0 6px 16px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(232, 62, 122, 0.35),
+    inset 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+@keyframes subtleShineSweep {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 135%;
+  }
+}
+
+/* Flash Burst Animation */
+@keyframes studioFlashBurst {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-studio-flash {
+  position: fixed;
+  inset: 0;
+  background: #FFFFFF;
+  z-index: 999999;
+  pointer-events: none;
+  animation: studioFlashBurst 0.35s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+/* Subtle Ambient Glow Pulsing */
+@keyframes ambientGlowPulse {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+
+.animate-ambient-glow {
+  animation: ambientGlowPulse 7s ease-in-out infinite;
+}
+
+/* Subtle Floating Particles */
+@keyframes particleFloat1 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+  50% { transform: translate(6px, -10px); opacity: 0.8; }
+}
+
+@keyframes particleFloat2 {
+  0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+  50% { transform: translate(-8px, 12px); opacity: 0.7; }
+}
+
+/* Slide Up Modal Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0.4;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Touch device tap glow animation */
+@keyframes tapGlowFade {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Subtle Interactive Elements Light Feedback */
+@media (hover: hover) and (pointer: fine) {
+  button:hover,
+  .luma-btn:hover,
+  [role="button"]:hover {
+    filter: brightness(1.05);
+    transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  }
+
+  .luma-card:hover,
+  .studio-panel-card:hover,
+  .interactive-tile:hover {
+    filter: brightness(1.04);
+    box-shadow: 0 8px 24px rgba(139, 77, 255, 0.14);
+    transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+  }
+}
+
+/* Subtle Edge Photo Memories */
+.luma-memory-card {
+  position: absolute;
+  background-color: #FFFFFF;
+  border-radius: 3px;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.65), 0 3px 10px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  user-select: none;
+}
+
+.luma-memory-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+.luma-washi-tape {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 38px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.32);
+  border: 0.5px solid rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 1px;
+  z-index: 2;
+}
+
+/* Experience Selection Grid & Visual Cards */
+.luma-experience-grid {
+  display: grid;
+  gap: 16px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  grid-template-columns: 1fr;
+}
+
+/* Tablet portrait: 2 columns */
+@media (min-width: 600px) and (max-width: 1024px) and (orientation: portrait) {
+  .luma-experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Tablet landscape & laptop: 3 columns */
+@media (min-width: 900px) and (orientation: landscape), (min-width: 1025px) {
+  .luma-experience-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.luma-experience-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(18, 16, 38, 0.75);
+  border: 1px solid rgba(185, 167, 255, 0.16);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 235px;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+  user-select: none;
+  touch-action: manipulation;
+  animation: studioCardStagger 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.luma-experience-card .card-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+  filter: brightness(0.82) contrast(1.05);
+}
+
+.luma-experience-card .card-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 8, 23, 0.15) 0%,
+    rgba(9, 8, 23, 0.52) 42%,
+    rgba(9, 8, 23, 0.94) 80%,
+    #090817 100%
+  );
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .luma-experience-card:hover {
+    transform: translateY(-5px) scale(1.015);
+    border-color: rgba(232, 62, 122, 0.45);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 28px rgba(139, 77, 255, 0.25);
+  }
+
+  .luma-experience-card:hover .card-bg-img {
+    transform: scale(1.06);
+    filter: brightness(0.95) contrast(1.1);
+  }
+
+  .luma-experience-card:hover .card-arrow-btn {
+    transform: translateX(4px);
+    background: #E83E7A;
+    color: #FFFFFF;
+    box-shadow: 0 0 14px rgba(232, 62, 122, 0.6);
+  }
+}
+
+.luma-experience-card:active {
+  transform: scale(0.97) translateY(1px);
+  transition: transform 0.08s ease;
+}
+
+/* Stagger entrance animations */
+.luma-experience-card:nth-child(1) { animation-delay: 0.06s; }
+.luma-experience-card:nth-child(2) { animation-delay: 0.12s; }
+.luma-experience-card:nth-child(3) { animation-delay: 0.18s; }
+.luma-experience-card:nth-child(4) { animation-delay: 0.24s; }
+.luma-experience-card:nth-child(5) { animation-delay: 0.30s; }
+.luma-experience-card:nth-child(6) { animation-delay: 0.36s; }
+.luma-experience-card:nth-child(7) { animation-delay: 0.42s; }
+
+/* Studio Experience Screen Entrance Keyframes */
+@keyframes studioTitleMoveUp {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes studioCardStagger {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes studioQuoteFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 0.75;
+    transform: translateY(0);
+  }
+}
+
+.animate-studio-title {
+  animation: studioTitleMoveUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-studio-quote {
+  animation: studioQuoteFade 0.6s ease-out 0.45s both;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   LUMABOOTH LIVE PHOTOBOOTH EXPERIENCE STYLES
+   ========================================================================== */
+
+/* Shutter Trigger Button */
+.luma-shutter-btn {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  padding: 4.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 
+    0 0 28px rgba(229, 72, 125, 0.45),
+    0 10px 28px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.9);
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+  user-select: none;
+  touch-action: manipulation;
+  outline: none;
+  border: none;
+}
+
+.luma-shutter-btn-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #E5487D 0%, #B82E88 45%, #8B3FD1 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.1s ease;
+}
+
+.luma-shutter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 36px rgba(229, 72, 125, 0.65),
+    0 12px 32px rgba(0, 0, 0, 0.7);
+}
+
+.luma-shutter-btn:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 18px rgba(229, 72, 125, 0.4);
+}
+
+.luma-shutter-btn:active .luma-shutter-btn-inner {
+  transform: scale(0.94);
+}
+
+/* Photobooth Countdown Animation */
+@keyframes countdownPulse {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+    filter: blur(10px);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1.15);
+    filter: blur(0);
+  }
+  75% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.3);
+    filter: blur(8px);
+  }
+}
+
+.animate-countdown-number {
+  animation: countdownPulse 0.92s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Toast Encouragement Bubble */
+@keyframes toastPop {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.9);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  85% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+}
+
+.animate-toast-pop {
+  animation: toastPop 2.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Circular Camera Control Button */
+.luma-cam-ctrl-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(9, 8, 23, 0.75);
+  border: 1px solid rgba(185, 167, 255, 0.22);
+  backdrop-filter: blur(12px);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  transition: transform 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+  touch-action: manipulation;
+  outline: none;
+}
+
+.luma-cam-ctrl-btn:hover {
+  transform: scale(1.08);
+  border-color: rgba(229, 72, 125, 0.6);
+  background: rgba(26, 18, 52, 0.85);
+}
+
+.luma-cam-ctrl-btn:active {
+  transform: scale(0.92);
+}
+
+/* Photostrip Subtle Floating Animation */
+@keyframes stripFloatingAnimation {
+  0% {
+    transform: rotate(-2deg) translateY(0px);
+  }
+  50% {
+    transform: rotate(-2deg) translateY(-8px);
+  }
+  100% {
+    transform: rotate(-2deg) translateY(0px);
+  }
+}
+
+.animate-strip-float {
+  animation: stripFloatingAnimation 6s ease-in-out infinite;
+}
+
+/* Print Thermal Progress Bar */
+@keyframes printBarFill {
+  0% {
+    width: 0%;
+  }
+  30% {
+    width: 42%;
+  }
+  70% {
+    width: 85%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-print-bar {
+  animation: printBarFill 2.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Mobile Bottom Sheet Slide-Up */
+@keyframes bottomSheetSlideUp {
+  0% {
+    transform: translateY(100%);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-bottom-sheet {
+  animation: bottomSheetSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Quick Camera Flash Burst */
+@keyframes cameraFlashBurst {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.88;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-camera-flash {
+  position: absolute;
+  inset: 0;
+  background-color: #FFFFFF;
+  pointer-events: none;
+  z-index: 60;
+  animation: cameraFlashBurst 0.22s ease-out forwards;
+}
+
+/* ==========================================================================
+   PART 19 — PREMIUM MICRO-INTERACTIONS DESIGN SYSTEM
+   ========================================================================== */
+
+/* 1. Universal Tactile Button Active Press Feedback */
+button, [role="button"], .luma-interactive {
+  transition: transform 0.14s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.14s ease, filter 0.14s ease;
+}
+
+button:active, [role="button"]:active, .luma-interactive:active {
+  transform: scale(0.965);
+}
+
+/* 2. Interactive Card Lift & Dynamic Glow */
+.luma-card-interactive {
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+  will-change: transform, box-shadow;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .luma-card-interactive:hover {
+    transform: translateY(-3px) scale(1.012);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 22px var(--event-glow, rgba(229, 72, 125, 0.35));
+    border-color: var(--event-primary, rgba(229, 72, 125, 0.5));
+  }
+}
+
+.luma-card-interactive:active {
+  transform: scale(0.975) translateY(1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+/* 3. Smooth Fast Page Transition */
+@keyframes lumaPageEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.995);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.luma-page-enter {
+  animation: lumaPageEnter 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity, transform;
+}
+
+/* 4. Thumbnail Snap & Pop-In */
+@keyframes thumbPopIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-thumb-in {
+  animation: thumbPopIn 0.24s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 5. Counter Pulse Keyframes */
+@keyframes counterPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.22); color: var(--event-primary, #E5487D); }
+  100% { transform: scale(1); }
+}
+
+.animate-counter-pulse {
+  animation: counterPulse 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* 6. AI Completion Reveal */
+@keyframes aiImageReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-ai-reveal {
+  animation: aiImageReveal 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 7. Save Toast Slide-In */
+@keyframes toastSlideIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -16px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.animate-toast {
+  animation: toastSlideIn 0.24s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 8. QR Code Smooth Entrance */
+@keyframes qrEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-qr-enter {
+  animation: qrEntrance 0.26s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 9. Memory Card Staggered Entrance */
+@keyframes memoryCardIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.97);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-memory-card {
+  animation: memoryCardIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+/* 10. Shimmer Progress Bar Loading */
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 100%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 1.8s infinite;
+}
+
+/* 11. Accessibility: Prefers-Reduced-Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .luma-cursor-glow {
+    display: none !important;
+  }
+}
+
+/* 12. PWA & Standalone Display Optimizations */
+@keyframes pwaSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile & Standalone Touch & Inset polish */
+@media all and (display-mode: standalone) {
+  html, body {
+    overscroll-behavior-y: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  button, input, select, textarea {
+    touch-action: manipulation;
+  }
+}
+
+
+
+
